@@ -1,0 +1,49 @@
+---
+- name: Install supervision agent from rpm
+  yum:
+    name: "{{ url_rpm }}"
+
+- name: Install plugin apache_status
+  copy:
+    src: apache_status.py
+    dest: /usr/lib/check_mk_agent/plugins/apache_status.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_apache_true' in group_names"
+
+- name: Install plugin acronis
+  copy:
+    src: Check_Acronis.py
+    dest: /usr/lib/check_mk_agent/plugins/Check_Acronis.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-acronis_enabled_true' in group_names"
+
+- name: Install plugin nginx_status
+  copy:
+    src: nginx_status.py
+    dest: /usr/lib/check_mk_agent/plugins/nginx_status.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_nginx_true' in group_names"
+
+- name: Install plugin mysql
+  copy:
+    src: mysql.sh
+    dest: /usr/lib/check_mk_agent/plugins/mysql.sh
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mysql_true' in group_names"
+
+- name: Install plugin MariaDB
+  copy:
+    src: mysql.sh
+    dest: /usr/lib/check_mk_agent/plugins/mysql.sh
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mariadb_true' in group_names"

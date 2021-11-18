@@ -1,0 +1,72 @@
+---
+- name: Install supervision agent from deb
+  apt:
+    deb: "{{ url_deb }}"
+
+- name: Install plugin apache_status
+  copy:
+    src: apache_status.py
+    dest: /usr/lib/check_mk_agent/plugins/apache_status.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_apache_true' in group_names"
+
+- name: Install plugin acronis
+  copy:
+    src: Check_Acronis.py
+    dest: /usr/lib/check_mk_agent/plugins/Check_Acronis.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-acronis_enabled_true' in group_names"
+
+- name: Install plugin nginx_status
+  copy:
+    src: nginx_status.py
+    dest: /usr/lib/check_mk_agent/plugins/nginx_status.py
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_nginx_true' in group_names"
+
+- name: check if rules file exists
+  stat:
+    path: /usr/lib/check_mk_agent/plugins/mysql.sh
+  register: mysql_file_check
+
+- name: Install plugin mysql
+  copy:
+    src: mysql.sh
+    dest: /usr/lib/check_mk_agent/plugins/mysql.sh
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mysql_true' in group_names"
+
+- name: Copy configuration plugin MySQL
+  copy:
+    src: mysql.cfg
+    dest: /etc/check_mk/mysql.cfg
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mysql_true' in group_names and mysql_file_check.stat.exists == False"
+
+- name: Install plugin MariaDB
+  copy:
+    src: mysql.sh
+    dest: /usr/lib/check_mk_agent/plugins/mysql.sh
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mariadb_true' in group_names"
+
+- name: Copy configuration plugin MariaDB
+  copy:
+    src: mysql.cfg
+    dest: /etc/check_mk/mysql.cfg
+    mode: '0544'
+    owner: root
+    group: root
+  when: "'meta-is_mariadb_true' in group_names and mysql_file_check.stat.exists == False"
