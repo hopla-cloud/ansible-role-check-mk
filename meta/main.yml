@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: check-mk-agent
+  role_name: check_mk
   author: hoplacloud
   description: Hopla.cloud role for ansible to deploy check_mk agent
   company: hopla.cloud
