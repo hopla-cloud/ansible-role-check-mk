@@ -1,4 +1,4 @@
 ---
 # defaults file for hoplacloud.check-mk-agent
-url_deb: "https://s3-fr-east-1.pub.hopla.cloud/swift/v1/AUTH_c90b3d634c8d4afcb89cfba2364acfe8/ho-corp-files/check_mk-agent/check-mk-agent_1.6.0p6-1_all.deb"
-url_rpm: "https://s3-fr-east-1.pub.hopla.cloud/swift/v1/AUTH_c90b3d634c8d4afcb89cfba2364acfe8/ho-corp-files/check_mk-agent/check-mk-agent-1.6.0p6-1.noarch.rpm"
+url_deb: "https://s3-fr-east-1.pub.hopla.cloud/swift/v1/AUTH_c90b3d634c8d4afcb89cfba2364acfe8/ho-corp-files/check_mk-agent/check-mk-agent_2.0.0p17-1_all.deb"
+url_rpm: "https://s3-fr-east-1.pub.hopla.cloud/swift/v1/AUTH_c90b3d634c8d4afcb89cfba2364acfe8/ho-corp-files/check_mk-agent/check-mk-agent-2.0.0p17-1.noarch.rpm"
